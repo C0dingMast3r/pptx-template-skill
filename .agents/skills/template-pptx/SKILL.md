@@ -116,11 +116,14 @@ When a user provides a new `.pptx` template:
    ```
    Move the generated images into `templates/<template_name>/images/`.
 
-5. **Generate layout inventory** — iterate through slide layouts and list placeholder names, types, and indices. Save as `layout_inventory.txt`.
+5. **Generate layout & shape inventories**:
+   ```bash
+   python .agents/skills/template-pptx/generate_inventories.py \
+     ".agents/skills/template-pptx/templates/<template_name>/<file>.pptx"
+   ```
+   This creates `layout_inventory.txt` and `shape_inventory.txt` in the template folder.
 
-6. **Generate shape inventory** — iterate through all slides and list every shape with its name, type, and text content. Save as `shape_inventory.txt`.
-
-7. **Confirm** to the user that the template is registered and ready.
+6. **Confirm** to the user that the template is registered and ready.
 
 ---
 
