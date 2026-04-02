@@ -88,6 +88,19 @@ projects/<project_name>/<version>/
 
 See AGENTS.md for the full project folder convention.
 
+### Common Template Pitfalls
+
+These issues come from not understanding what the layout already provides. **Before editing any slide, compare it against the layout in `layout_inventory.txt`** to see what's inherited.
+
+- **Duplicate slide numbers / page numbers.** Layouts often include slide number placeholders. If you add another `<p:sp>` with a slide number, you get "12 12". Check the layout first — if it already has a footer or slide number placeholder, do not add one on the slide.
+- **Misplaced slide numbers.** Slide number placeholders must stay in their layout-defined position (typically bottom-right). Never move them to the top-left or other arbitrary positions. If the layout already handles slide numbers, do not create a new text box with the number.
+- **Duplicate footer / copyright text.** Same issue — layouts may already contain copyright notices or confidentiality text. Adding it again in the slide XML doubles it.
+- **Content overflowing into footer zone.** The bottom ~0.75" of the slide is reserved for footer elements (copyright, page numbers). Content text boxes must not extend below `y + h > 6118225 EMU` (~6.69"). Check shape positions.
+- **Media/image aspect ratio and letterboxing.** When inserting images or video placeholders, match the aspect ratio to the container. Black bars (letterboxing) indicate a mismatch. Size the container to the media's native aspect ratio, or crop to fit.
+- **Broken or doubled decorative lines.** Layouts often have horizontal rule lines. If the slide XML also has one, you get visual artifacts (doubled, dashed, or misaligned lines). Remove the duplicate.
+- **Title in wrong placeholder or position.** Always use the layout's designated title placeholder — do not create a free text box for the title. Check `layout_inventory.txt` for the correct placeholder idx and position.
+- **Orphaned placeholder text.** After replacing content, grep for leftover template text like "Click to edit", "Your section title here", "Lorem ipsum", etc.
+
 ---
 
 ## Onboarding a New Template
